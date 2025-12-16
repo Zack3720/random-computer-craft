@@ -1,7 +1,12 @@
-local integrator = peripheral.find("colonyIntegrator");
+local colony = peripheral.find("colonyIntegrator");
+local chat = peripheral.find("chatBox");
 
-if integrator.isInColony() then
-    print("Block is inside a colony!")
-else
-    print("Not in a colony!")
+
+while (true) do 
+    local event, username, device = os.pullEvent("playerClick")
+    local request = colony.getRequest();
+
+    for index, value in ipairs(request) do
+        chat.sendMessage(request.name, "Colony");
+    end
 end
